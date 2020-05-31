@@ -1,0 +1,2 @@
+creative_mode (Creative mode) bool false
+enable_fire (Destructive and spreading fire) bool true
