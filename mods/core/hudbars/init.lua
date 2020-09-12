@@ -547,6 +547,8 @@ minetest.register_on_joinplayer(function(player)
 	hide_builtin(player)
 	custom_hud(player)
 	hb.players[player:get_player_name()] = player
+	player:hud_set_hotbar_image("gui_hotbar.png")
+	player:hud_set_hotbar_selected_image("gui_hotbar_selected.png")
 end)
 
 minetest.register_on_leaveplayer(function(player)

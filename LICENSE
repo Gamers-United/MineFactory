@@ -1,3 +1,20 @@
+License for IMAGES:
+-----------------------------------------------------------
+         
+The images in the folder ./mods/default are licensed under the license.txt file in that directory.
+
+The images of ./mods/base & ./mods/core are in general; licensed under:
+All Rights Reserved - Copyright 2020 Eric Perera.
+         
+He has granted specific rights for the images to be viewed and used as required by this project.
+He does not allow use outside of this project, or modification/distribution/any other right not explicity granted above.
+                    
+In some specific cases, licenses may be differing from those here. In that case, a license.txt, license or license.md file has been included.
+This file details the exact license for that folder.          
+                    
+                    
+License for CODE:
+-------------------------------------------------------------------------              
                     GNU GENERAL PUBLIC LICENSE
                        Version 3, 29 June 2007
 

@@ -7,12 +7,14 @@ minetest.register_alias("mapgen_stone", "blocks:stone")
 minetest.register_alias("mapgen_dirt", "blocks:dirt")
 minetest.register_alias("mapgen_dirt_with_grass", "blocks:dirt_with_grass")
 minetest.register_alias("mapgen_sand", "blocks:sand")
+minetest.register_alias("mapgen_redsand", "blocks:red_sand")
 minetest.register_alias("mapgen_water_source", "blocks:water_source")
 minetest.register_alias("mapgen_river_water_source", "blocks:river_water_source")
 minetest.register_alias("mapgen_lava_source", "blocks:lava_source")
 minetest.register_alias("mapgen_gravel", "blocks:gravel")
 
 minetest.register_alias("mapgen_cobble", "blocks:cobble")
+
 
 
 --
@@ -51,11 +53,8 @@ minetest.register_biome({
 	node_top = "blocks:dirt_with_grass",
 	depth_top = 1,
 	node_filler = "blocks:dirt",
-	depth_filler = 1,
+	depth_filler = 3,
 	--node_stone = "",
-	--node_water_top = "",
-	--depth_water_top = ,
-	--node_water = "",
 	y_min = 5,
 	y_max = 31000,
 	heat_point = 50,
@@ -63,7 +62,7 @@ minetest.register_biome({
 })
 
 minetest.register_biome({
-	name = "blocks:grassland_ocean",
+	name = "blocks:ocean",
 	--node_dust = "",
 	node_top = "blocks:sand",
 	depth_top = 1,
@@ -79,3 +78,32 @@ minetest.register_biome({
 	humidity_point = 50,
 })
 
+minetest.register_biome({
+	name = "blocks:dry",
+	node_top = "blocks:dirt",
+	depth_top = 4,
+	y_min = 5,
+	y_max = 31000,
+	heat_point = 70,
+	humidity_point = 30,
+})
+
+minetest.register_biome({
+	name = "blocks:red_desert",
+	node_top = "blocks:red_sand",
+	depth_top = 4,
+	y_min = 5,
+	y_max = 31000,
+	heat_point = 70,
+	humidity_point = 30,
+})
+
+minetest.register_biome({
+	name = "blocks:desert",
+	node_top = "blocks:sand",
+	depth_top = 4,
+	y_min = 5,
+	y_max = 31000,
+	heat_point = 70,
+	humidity_point = 30,
+})

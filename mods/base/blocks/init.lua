@@ -4,6 +4,11 @@ WATER_VISC = 1
 LAVA_VISC = 7
 LIGHT_MAX = 14
 
+--
+-- Seed math.random
+--
+math.randomseed(os.time())
+
 -- Load other files
 minetest.register_node("blocks:stone", {
 	description = "Stone",
@@ -46,6 +51,12 @@ minetest.register_node("blocks:dirt", {
 minetest.register_node("blocks:sand", {
 	description = "Sand",
 	tiles ={"blocks_sand.png"},
+	groups = {crumbly=3, falling_node=1},
+})
+
+minetest.register_node("blocks:red_sand", {
+	description = "Red Sand",
+	tiles ={"blocks_red_sand.png"},
 	groups = {crumbly=3, falling_node=1},
 })
 
@@ -201,8 +212,6 @@ minetest.register_abm({
 				and (minetest.get_node_light(above) or 0) >= 13 then
 			if name == "blocks:snow" or name == "blocks:snowblock" then
 				minetest.set_node(pos, {name = "blocks:dirt_with_snow"})
-			else
-				minetest.set_node(pos, {name = "blocks:dirt_with_grass"})
 			end
 		end
 	end
@@ -223,4 +232,68 @@ minetest.register_abm({
 		end
 	end
 })
---
+
+minetest.register_abm({
+	nodenames = {"blocks:dirt_with_grass"},
+	interval = 2,
+	chance = 200,
+	action = function(pos, node)
+		local b_xplus = {x=pos.x+1, y=pos.y, z=pos.z}
+		local b_xneg = {x=pos.x-1, y=pos.y, z=pos.z}
+		local b_zplus = {x=pos.x, y=pos.y, z=pos.z+1}
+		local b_zneg = {x=pos.x, y=pos.y, z=pos.z-1}
+		local b_xplus_down = {x=pos.x+1, y=pos.y-1, z=pos.z}
+		local b_xneg_down = {x=pos.x-1, y=pos.y-1, z=pos.z}
+		local b_zplus_down = {x=pos.x, y=pos.y-1, z=pos.z+1}
+		local b_zneg_down = {x=pos.x, y=pos.y-1, z=pos.z-1}
+		local b_xplus_up = {x=pos.x+1, y=pos.y+1, z=pos.z}
+		local b_xneg_up = {x=pos.x-1, y=pos.y+1, z=pos.z}
+		local b_zplus_up = {x=pos.x, y=pos.y+1, z=pos.z+1}
+		local b_zneg_up = {x=pos.x, y=pos.y+1, z=pos.z-1}
+		--
+		-- Extra high
+		--
+		local b_xplus_up2 = {x=pos.x+1, y=pos.y+2, z=pos.z}
+		local b_xneg_up2 = {x=pos.x-1, y=pos.y+2, z=pos.z}
+		local b_zplus_up2 = {x=pos.x, y=pos.y+2, z=pos.z+1}
+		local b_zneg_up2 = {x=pos.x, y=pos.y+2, z=pos.z-1}		
+
+		local select = math.random(1,12)
+		if select == 1 and minetest.get_node(b_xplus).name == "blocks:dirt" and minetest.get_node(b_xplus_up).name == "air" then
+			minetest.set_node(b_xplus, {name = "blocks:dirt_with_grass"})
+		end
+		if select == 2 and minetest.get_node(b_xneg).name == "blocks:dirt" and minetest.get_node(b_xneg_up).name == "air" then
+			minetest.set_node(b_xneg, {name = "blocks:dirt_with_grass"})
+		end
+		if select == 3 and minetest.get_node(b_zplus).name == "blocks:dirt" and minetest.get_node(b_zplus_up).name == "air" then
+			minetest.set_node(b_zplus, {name = "blocks:dirt_with_grass"})
+		end
+		if select == 4 and minetest.get_node(b_zneg).name == "blocks:dirt" and minetest.get_node(b_zneg_up).name == "air" then
+			minetest.set_node(b_zneg, {name = "blocks:dirt_with_grass"})
+		end
+		if select == 5 and minetest.get_node(b_xplus_down).name == "blocks:dirt" and minetest.get_node(b_xplus).name == "air" then
+			minetest.set_node(b_xplus_down, {name = "blocks:dirt_with_grass"})
+		end
+		if select == 6 and minetest.get_node(b_xneg_down).name == "blocks:dirt" and minetest.get_node(b_xneg).name == "air" then
+			minetest.set_node(b_xneg_down, {name = "blocks:dirt_with_grass"})
+		end
+		if select == 7 and minetest.get_node(b_zplus_down).name == "blocks:dirt" and minetest.get_node(b_zplus).name == "air" then
+			minetest.set_node(b_zplus_down, {name = "blocks:dirt_with_grass"})
+		end
+		if select == 8 and minetest.get_node(b_zneg_down).name == "blocks:dirt" and minetest.get_node(b_zneg).name == "air" then
+			minetest.set_node(b_zneg_down, {name = "blocks:dirt_with_grass"})
+		end
+		if select == 9 and minetest.get_node(b_xplus_up).name == "blocks:dirt" and minetest.get_node(b_xplus_up2).name == "air" then
+			minetest.set_node(b_xplus_up, {name = "blocks:dirt_with_grass"})
+		end
+		if select == 10 and minetest.get_node(b_xneg_up).name == "blocks:dirt" and minetest.get_node(b_xneg_up2).name == "air" then
+			minetest.set_node(b_xneg_up, {name = "blocks:dirt_with_grass"})
+		end
+		if select == 11 and minetest.get_node(b_zplus_up).name == "blocks:dirt" and minetest.get_node(b_zplus_up2).name == "air" then
+			minetest.set_node(b_zplus_up, {name = "blocks:dirt_with_grass"})
+		end
+		if select == 12 and minetest.get_node(b_zneg_up).name == "blocks:dirt" and minetest.get_node(b_zneg_up2).name == "air" then
+			minetest.set_node(b_zneg_up, {name = "blocks:dirt_with_grass"})
+		end
+	end
+})
