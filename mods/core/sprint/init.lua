@@ -11,6 +11,7 @@ distributed without any warranty.
 SPRINT_METHOD = 0
 SPRINT_SPEED = 1.6
 SPRINT_JUMP = 1.15
+SPRINT_STAMINA = 20
 SPRINT_TIMEOUT = 0.5 --Only used if SPRINT_METHOD = 0
 
 if SPRINT_METHOD == 0 then
