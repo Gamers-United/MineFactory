@@ -158,7 +158,7 @@ minetest.register_node("blocks:river_water_source", {
 	liquid_alternative_source = "blocks:river_water_source",
 	liquid_viscosity = 1,
 	liquid_renewable = false,
-	liquid_range = 2,
+	liquid_range = 10,
 	post_effect_color = {a = 103, r = 30, g = 76, b = 90},
 	groups = {water = 3, liquid = 3, puts_out_fire = 1, cools_lava = 1},
 })
@@ -186,7 +186,7 @@ minetest.register_node("blocks:river_water_flowing", {
 	liquid_alternative_source = "blocks:river_water_source",
 	liquid_viscosity = 1,
 	liquid_renewable = false,
-	liquid_range = 2,
+	liquid_range = 10,
 	post_effect_color = {a = 103, r = 30, g = 76, b = 90},
 	groups = {water = 3, liquid = 3, puts_out_fire = 1,
 		not_in_creative_inventory = 1, cools_lava = 1},
