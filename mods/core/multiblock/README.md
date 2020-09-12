@@ -1,3 +1,8 @@
+Extra Description by Minefactory
+==========
+
+Just note that this mod has been updated to GPLv3.0 for inclusion in this project via section 3 of the LGPLv2.1 license.
+
 Multiblock
 ==========
 This is a library meant to help support the programming of multi-block
