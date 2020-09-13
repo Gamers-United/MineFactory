@@ -79,11 +79,6 @@ minetest.register_node("blocks:clay", {
 	groups = {crumbly=3},
 	drop = 'blocks:clay_lump 4',
 })
-minetest.register_node("blocks:cactus", {
-	description = "Cactus",
-	tiles ={"blocks_cactus_top.png", "blocks_cactus_top.png", "blocks_cactus_side.png"},
-	groups = {snappy=2,choppy=3},
-})
 
 minetest.register_node("blocks:water_flowing", {
 	description = "Water (flowing)",

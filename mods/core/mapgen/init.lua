@@ -48,7 +48,7 @@ minetest.register_ore({
 --
 
 minetest.register_biome({
-	name = "blocks:grassland",
+	name = "mapgen:grassland",
 	--node_dust = "",
 	node_top = "blocks:dirt_with_grass",
 	depth_top = 1,
@@ -58,11 +58,11 @@ minetest.register_biome({
 	y_min = 5,
 	y_max = 31000,
 	heat_point = 50,
-	humidity_point = 50,
+	humidity_point = 60,
 })
 
 minetest.register_biome({
-	name = "blocks:ocean",
+	name = "mapgen:ocean",
 	--node_dust = "",
 	node_top = "blocks:sand",
 	depth_top = 1,
@@ -79,17 +79,17 @@ minetest.register_biome({
 })
 
 minetest.register_biome({
-	name = "blocks:dry",
+	name = "mapgen:dry",
 	node_top = "blocks:dirt",
 	depth_top = 4,
 	y_min = 5,
 	y_max = 31000,
-	heat_point = 70,
-	humidity_point = 30,
+	heat_point = 60,
+	humidity_point = 40,
 })
 
 minetest.register_biome({
-	name = "blocks:red_desert",
+	name = "mapgen:red_desert",
 	node_top = "blocks:red_sand",
 	depth_top = 4,
 	y_min = 5,
@@ -99,11 +99,13 @@ minetest.register_biome({
 })
 
 minetest.register_biome({
-	name = "blocks:desert",
+	name = "mapgen:desert",
 	node_top = "blocks:sand",
 	depth_top = 4,
+	node_filler = "blocks:sandstone",
+	depth_filler = 15,
 	y_min = 5,
 	y_max = 31000,
 	heat_point = 70,
-	humidity_point = 30,
+	humidity_point = 20,
 })
