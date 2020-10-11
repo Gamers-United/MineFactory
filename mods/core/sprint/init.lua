@@ -8,17 +8,11 @@ distributed without any warranty.
 ]]
 
 --Configuration variables, these are all explained in README.md
-SPRINT_METHOD = 0
-SPRINT_SPEED = 1.6
+SPRINT_SPEED = 1.7
 SPRINT_JUMP = 1.15
-SPRINT_STAMINA = 20
 SPRINT_TIMEOUT = 1 --Only used if SPRINT_METHOD = 0
+SPRINT_STAMINA = 999999
+SPRINT_HUDBARS_USED = false
 
-if SPRINT_METHOD == 0 then
-	dofile(minetest.get_modpath("sprint") .. "/wsprint.lua")
-elseif SPRINT_METHOD == 1 then
-	dofile(minetest.get_modpath("sprint") .. "/esprint.lua")
-else
-	minetest.log("error", "Sprint Mod - SPRINT_METHOD is not set properly, using e to sprint")
-	dofile(minetest.get_modpath("sprint") .. "/esprint.lua")
-end
+dofile(minetest.get_modpath("sprint") .. "/wsprint.lua")
+dofile(minetest.get_modpath("sprint") .. "/esprint.lua")

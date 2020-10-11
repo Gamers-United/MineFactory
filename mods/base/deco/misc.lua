@@ -57,6 +57,9 @@ minetest.register_node("deco:cactus", {
             minetest.add_item(drop_location, {name="deco:cactus"})
         end
     end,
+    after_dig_node = function(pos, node, metadata, digger)
+		default.dig_up(pos, node, digger)
+	end,
 })
 
 minetest.register_abm({
@@ -110,4 +113,62 @@ minetest.register_decoration({
     decoration = "deco:cactus",
     height = 1,
     height_max = 3,
+})
+-- reeds
+minetest.register_decoration({
+	deco_type = "schematic",
+	place_on = "blocks:sand",
+	sidelen = 16,
+    noise_params = {
+		offset = 0.01,
+		scale = 0.001,
+ 		spread = {x = 100, y = 100, z = 100},
+		seed = 2,
+		octaves = 3,
+		persist = 0.7
+	},
+	biomes = {"mapgen:beach"},
+	schematic = minetest.get_modpath("deco").."/schematics/papyrus.mts",
+	rotation = random,
+	spawn_by = "blocks:water_source",
+	-- Note that place_center_y is set to false. This is because we want the cuboids to appear as if they lie "on" the surface..
+	flags = {place_center_x = true, place_center_y = false, place_center_z = true},
+})
+minetest.register_decoration({
+	deco_type = "schematic",
+	place_on = "blocks:dirt",
+	sidelen = 16,
+    noise_params = {
+		offset = 0.01,
+		scale = 0.0005,
+ 		spread = {x = 250, y = 250, z = 250},
+		seed = 2,
+		octaves = 3,
+		persist = 0.7
+	},
+	biomes = {"mapgen:dry"},
+	schematic = minetest.get_modpath("deco").."/schematics/papyrus.mts",
+    rotation = random,
+    spawn_by = "blocks:water_source",
+	-- Note that place_center_y is set to false. This is because we want the cuboids to appear as if they lie "on" the surface..
+	flags = {place_center_x = true, place_center_y = false, place_center_z = true},
+})
+minetest.register_decoration({
+	deco_type = "schematic",
+	place_on = "blocks:dirt_with_grass",
+	sidelen = 16,
+    noise_params = {
+		offset = 0.01,
+		scale = 0.00001,
+ 		spread = {x = 250, y = 250, z = 250},
+		seed = 2,
+		octaves = 3,
+		persist = 0.7
+	},
+	biomes = {"mapgen:grasslands"},
+	schematic = minetest.get_modpath("deco").."/schematics/papyrus.mts",
+    rotation = random,
+    spawn_by = "blocks:water_source",
+	-- Note that place_center_y is set to false. This is because we want the cuboids to appear as if they lie "on" the surface..
+	flags = {place_center_x = true, place_center_y = false, place_center_z = true},
 })

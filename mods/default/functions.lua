@@ -210,12 +210,9 @@ end
 function default.grow_papyrus(pos, node)
 	pos.y = pos.y - 1
 	local name = minetest.get_node(pos).name
-	if name ~= "default:dirt" and
-			name ~= "default:dirt_with_grass" and
-			name ~= "default:dirt_with_dry_grass" and
-			name ~= "default:dirt_with_rainforest_litter" and
-			name ~= "default:dry_dirt" and
-			name ~= "default:dry_dirt_with_dry_grass" then
+	if name ~= "blocks:dirt" and
+			name ~= "blocks:dirt_with_grass" and
+			name ~= "blocks:sands" then
 		return
 	end
 	if not minetest.find_node_near(pos, 3, {"group:water"}) then
