@@ -4,7 +4,7 @@
 
 minetest.register_node("deco:cactus", {
 	description = "Cactus",
-	tiles ={"blocks_cactus_top.png", "blocks_cactus_top.png", "blocks_cactus_side.png"},
+	tiles ={"deco_cactus_top.png", "deco_cactus_top.png", "deco_cactus_side.png"},
     groups = {snappy=2,choppy=3},
     damage_per_second = 1,
     on_construct = function(pos)
@@ -40,7 +40,11 @@ minetest.register_node("deco:cactus", {
         local below = {x=pos.x, y=pos.y-1, z=pos.z}
         -- check if the blocks above/below/left/right are air to allow placement
         if minetest.get_node(xp).name == "air" and minetest.get_node(xn).name == "air" and minetest.get_node(zp).name == "air" and minetest.get_node(zn).name == "air" then
-            if minetest.get_node(below).name == "blocks:sand" or minetest.get_node(below).name == "blocks:red_sand" then
+            if minetest.get_node(below).name == "blocks:sand" then
+                minetest.set_node(pos, {name=itemstack:get_name()})
+                itemstack:take_item()
+            end
+            if minetest.get_node(below).name == "blocks:red_sand" then
                 minetest.set_node(pos, {name=itemstack:get_name()})
                 itemstack:take_item()
             end
@@ -103,19 +107,48 @@ minetest.register_abm({
         end
     end
 })
-
+-- cactus
 minetest.register_decoration({
     deco_type = "simple",
     place_on = "blocks:sand",
     sidelen = 16,
     fill_ratio = 0.004,
-    biomes = {"mapgen:desert", "mapgen:red_desert"},
+    biomes = {"mapgen:desert", "mapgen:desert_red"},
     decoration = "deco:cactus",
     height = 1,
     height_max = 3,
 })
--- reeds
 minetest.register_decoration({
+    deco_type = "simple",
+    place_on = "blocks:red_sand",
+    sidelen = 16,
+    fill_ratio = 0.004,
+    biomes = {"mapgen:desert", "mapgen:desert_red"},
+    decoration = "deco:cactus",
+    height = 1,
+    height_max = 3,
+})
+
+-- sugar cane
+minetest.register_node("deco:sugarcane", {
+	description = ("Sugarcane"),
+	drawtype = "plantlike",
+	tiles = {"deco_papyrus.png"},
+	inventory_image = "deco_papyrus.png",
+	wield_image = "deco_papyrus.png",
+	paramtype = "light",
+	sunlight_propagates = true,
+	walkable = false,
+	selection_box = {
+		type = "fixed",
+		fixed = {-6 / 16, -0.5, -6 / 16, 6 / 16, 0.5, 6 / 16},
+	},
+	groups = {snappy = 3, flammable = 2},
+	sounds = deco.node_sound_leaves_defaults(),
+	after_dig_node = function(pos, node, metadata, digger)
+		deco.dig_up(pos, node, digger)
+	end,
+})minetest.register_decoration({
 	deco_type = "schematic",
 	place_on = "blocks:sand",
 	sidelen = 16,
@@ -129,7 +162,8 @@ minetest.register_decoration({
 	},
 	biomes = {"mapgen:beach"},
 	schematic = minetest.get_modpath("deco").."/schematics/papyrus.mts",
-	rotation = random,
+    replacements = {{"default:papyrus","deco:sugarcane"}},
+	rotation = "random",
 	spawn_by = "blocks:water_source",
 	-- Note that place_center_y is set to false. This is because we want the cuboids to appear as if they lie "on" the surface..
 	flags = {place_center_x = true, place_center_y = false, place_center_z = true},
@@ -146,29 +180,12 @@ minetest.register_decoration({
 		octaves = 3,
 		persist = 0.7
 	},
-	biomes = {"mapgen:dry"},
+	biomes = {"mapgen:grassland_dry"},
 	schematic = minetest.get_modpath("deco").."/schematics/papyrus.mts",
+    replacements = {{"default:papyrus","deco:sugarcane"}},
     rotation = random,
     spawn_by = "blocks:water_source",
 	-- Note that place_center_y is set to false. This is because we want the cuboids to appear as if they lie "on" the surface..
 	flags = {place_center_x = true, place_center_y = false, place_center_z = true},
 })
-minetest.register_decoration({
-	deco_type = "schematic",
-	place_on = "blocks:dirt_with_grass",
-	sidelen = 16,
-    noise_params = {
-		offset = 0.01,
-		scale = 0.00001,
- 		spread = {x = 250, y = 250, z = 250},
-		seed = 2,
-		octaves = 3,
-		persist = 0.7
-	},
-	biomes = {"mapgen:grasslands"},
-	schematic = minetest.get_modpath("deco").."/schematics/papyrus.mts",
-    rotation = random,
-    spawn_by = "blocks:water_source",
-	-- Note that place_center_y is set to false. This is because we want the cuboids to appear as if they lie "on" the surface..
-	flags = {place_center_x = true, place_center_y = false, place_center_z = true},
-})
+

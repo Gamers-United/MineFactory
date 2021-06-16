@@ -11,8 +11,8 @@ distributed without any warranty.
 SPRINT_SPEED = 1.7
 SPRINT_JUMP = 1.15
 SPRINT_TIMEOUT = 1 --Only used if SPRINT_METHOD = 0
-SPRINT_STAMINA = 999999
-SPRINT_HUDBARS_USED = false
+SPRINT_STAMINA = 30
+SPRINT_HUDBARS_USED = true
 
 dofile(minetest.get_modpath("sprint") .. "/wsprint.lua")
 dofile(minetest.get_modpath("sprint") .. "/esprint.lua")

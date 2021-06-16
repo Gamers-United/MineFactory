@@ -62,7 +62,7 @@ minetest.register_biome({
 })
 
 minetest.register_biome({
-	name = "mapgen:grassland_aspen",
+	name = "mapgen:grassland_birch",
 	--node_dust = "",
 	node_top = "blocks:dirt_with_grass",
 	depth_top = 1,
@@ -91,6 +91,7 @@ minetest.register_biome({
 	heat_point = 50,
 	humidity_point = 50,
 })
+
 minetest.register_biome({
 	name = "mapgen:beach",
 	--node_dust = "",
@@ -108,9 +109,8 @@ minetest.register_biome({
 	humidity_point = 50,
 })
 
-
 minetest.register_biome({
-	name = "mapgen:dry",
+	name = "mapgen:grassland_dry",
 	node_top = "blocks:dirt",
 	depth_top = 4,
 	y_min = 4,
@@ -120,12 +120,12 @@ minetest.register_biome({
 })
 
 minetest.register_biome({
-	name = "mapgen:red_desert",
+	name = "mapgen:desert_red",
 	node_top = "blocks:red_sand",
 	depth_top = 4,
 	y_min = 4,
 	y_max = 31000,
-	heat_point = 70,
+	heat_point = 80,
 	humidity_point = 30,
 })
 
@@ -137,6 +137,80 @@ minetest.register_biome({
 	depth_filler = 15,
 	y_min = 4,
 	y_max = 31000,
-	heat_point = 70,
+	heat_point = 80,
 	humidity_point = 20,
 })
+
+minetest.register_biome({
+	name = "mapgen:jungle",
+	node_top = "blocks:dirt_with_grass",
+	depth_top = 1,
+	node_filler = "blocks:dirt",
+	depth_filler = 3,
+	y_min = 4,
+	y_max = 31000,
+	heat_point = 70,
+	humidity_point = 70,
+})
+
+minetest.register_biome({
+	name = "mapgen:pine_forest",
+	node_top = "blocks:dirt_with_grass",
+	depth_top = 1,
+	node_filler = "blocks:dirt",
+	depth_filler = 3,
+	y_min = 4,
+	y_max = 31000,
+	heat_point = 40,
+	humidity_point = 20,
+})
+
+minetest.register_biome({
+	name = "mapgen:pine_forest_snowy",
+	node_top = "blocks:dirt_with_grass",
+	node_dust = "blocks:snow_short",
+	depth_top = 1,
+	node_filler = "blocks:dirt",
+	depth_filler = 3,
+	y_min = 4,
+	y_max = 31000,
+	heat_point = 10,
+	humidity_point = 10,
+})
+
+minetest.register_biome({
+	name = "mapgen:savanna",
+	node_top = "blocks:sand",
+	depth_top = 4,
+	node_filler = "blocks:sandstone",
+	depth_filler = 15,
+	y_min = 4,
+	y_max = 31000,
+	heat_point = 70,
+	humidity_point = 40,
+})
+
+minetest.register_biome({
+	name = "mapgen:tundra",
+	node_top = "blocks:snow",
+	depth_top = 3,
+	node_filler = "blocks:dirt",
+	depth_filler = 15,
+	y_min = 4,
+	y_max = 31000,
+	heat_point = 0,
+	humidity_point = 0,
+})
+
+minetest.register_biome({
+	name = "mapgen:grassland_bare",
+	node_top = "blocks:dirt_with_grass",
+	depth_top = 1,
+	node_filler = "blocks:dirt",
+	depth_filler = 3,
+	y_min = 4,
+	y_max = 31000,
+	heat_point = 50,
+	humidity_point = 50,
+})
+
