@@ -1,8 +1,6 @@
 --minetorio version/other code settings
-minetorio = {}
-minetorio.version = 001
-
-
+minefactory = {}
+minefactory.version = 001
 
 --hand texture
 minetest.register_item(":", {
@@ -22,18 +20,7 @@ minetest.register_item(":", {
 	}
 })
 
-
-
-
-
-
-
-
-
-
-
-
 -- on join player
 minetest.register_on_joinplayer(function(player)
-	minetest.chat_send_player(player:get_player_name(), "This is MineFactory. WIP v"..minetorio.version)
+	minetest.chat_send_player(player:get_player_name(), "This is MineFactory. WIP v"..minefactory.version)
 end)
