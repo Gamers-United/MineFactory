@@ -1,8 +1,10 @@
 research = {}
 research.lasttechnologyviewed = ""
-research.technologys = {}
+research.technologies = {}
+research.technologystodo = {}
 research.technologiescompleted = {}
 
+dofile()
 
 -- formspec
 function research.show(name)
@@ -16,11 +18,12 @@ end
 -- generate form
 function research.generate_form()
 
-
+    local form = research.rawform()
+    return form
 end
 
-function research.rawform(labelRDetails_label, labelRName_label, imageLargeResearch_image, labelCostDetails_label, labelEffectsDescription_label, tableListTechnologies_col_1_items, tableListTechnologies_col_2_items, tableListTechnologies_col_3_items)
--- 
+function research.rawform(labelRName_label, ImageLargeResearch_image, labelCostDetails_label, labelEffectsDescription_label, tableListTechnologies_col_1_items, tableListTechnologies_col_2_items, tableListTechnologies_col_3_items)
+-- Main Display Research Name, Image for Main Display, Main Display Cost Details, Main Display Effects Description, Technology List Image, Technology List Name, Technology List Research Cost Image
     local function table_item_str(cells)
         local most_items = 0
         for i, v in pairs(cells) do
@@ -50,10 +53,10 @@ function research.rawform(labelRDetails_label, labelRName_label, imageLargeResea
     local form = "" ..
     "size[4.5,10]" ..
     "bgcolor[#41444B;false]" ..
-    "label[0.1,0;"..minetest.formspec_escape(labelRDetails_label).."]" ..
+    "label[0.1,0;Research Details:]" ..
     "label[1.4,0;"..minetest.formspec_escape(labelRName_label).."]" ..
+    "image_button[0.2,0.5;1.6,2.3;"..ImageLargeResearch_image..";ImageLargeResearch;]" ..
     "box[0.1,0.4;4.3,2.4;#52575D]" ..
-    "image[0.2,0.5;1.8,2.5;"..imageLargeResearch_image.."]" ..
     "label[1.7,0.4;Cost: ]" ..
     "label[2.1,0.4;"..minetest.formspec_escape(labelCostDetails_label).."]" ..
     "box[1.7,0.7;2.6,0.6;#FDDB3A]" ..
@@ -64,8 +67,8 @@ function research.rawform(labelRDetails_label, labelRName_label, imageLargeResea
     "label[0.1,2.7;Technology List]" ..
     "tablecolumns[image;text;image]" ..
     "table[0.2,3.2;4.1,6.6;tableListTechnologies;"..tableListTechnologies_cell_str..";]" ..
+    "label[0.1,0;Research Details:]" ..
     ""
-
     return form
 end
 
